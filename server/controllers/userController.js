@@ -5,7 +5,7 @@ const userController = {};
 userController.addUser = (req, res, next) => {
   try {
     const { name, address, email } = req.body;
-    User.create(
+    model.User.create(
       {
         name: name,
         address: {
@@ -17,7 +17,7 @@ userController.addUser = (req, res, next) => {
         },
         email: email,
       },
-      (user) => {
+      (err, user) => {
         res.locals.newUser = user;
         return next();
       }
@@ -26,5 +26,16 @@ userController.addUser = (req, res, next) => {
     return next(err);
   }
 };
+
+userController.getUsers = (req, res, next) => {
+  try {
+    model.User.find({}, (err, users) => {
+      res.locals.users = users;
+      return next();
+    })
+  } catch (err) {
+    return next(err);
+  }
+}
 
 module.exports = userController;

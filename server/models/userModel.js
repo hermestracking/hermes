@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const MONGO_URI =
-  'mongodb+srv://rfh:xcgA7#eXEGurHC@codesmith.jttpr.mongodb.net/hermes?retryWrites=true&w=majority';
-mongoose
+  'mongodb+srv://hermes:h3rm3sh3rm3s@codesmith.jttpr.mongodb.net/hermes?retryWrites=true&w=majority';
+
+  mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

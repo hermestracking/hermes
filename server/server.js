@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const userController = require('./controllers/userController');
 const app = express();
 
 const PORT = 3000;
@@ -17,8 +18,12 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
-app.get('/users/create', (req, res) => {
-  res.status.length(200).json(res.locals.newUser);
+app.post('/users/create', userController.addUser, (req, res) => {
+  res.status(200).json(res.locals.newUser);
+})
+
+app.get('/users/get', userController.getUsers, (req, res) => {
+  res.status(200).json(res.locals.users);
 })
 
 
