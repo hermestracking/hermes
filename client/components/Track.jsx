@@ -8,7 +8,7 @@ const Track = (props) => {
             <div className="floating-container">
                 <span className="floating-text">Enter tracking number...</span>
             </div>
-            <button className="track-button" onClick={() => props.handleTrack()}>Track</button>
+            <button className="track-button" onClick={() => props.handleTrack(props.tracking)}>Track</button>
             </div>
         </React.Fragment>
     )

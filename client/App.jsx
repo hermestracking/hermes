@@ -10,11 +10,17 @@ const App = () => {
 
   const [tracking, setTracking] = useState('');
   const [shipments, setShipments] = useState([]);
+  const [selectedItem, setSelectedItem] = useState({});
 
-  const handleTrack = () => {
+  console.log(shipments)
+
+  const handleTrack = (tracking) => {
+    const body = {tracking}
+    console.log(body)
     fetch('http://localhost:8080/api/test', {
-    method: 'GET',
+    method: 'POST',
     headers: {"Content-Type" : "application/json"},
+    body: JSON.stringify(body)
   })
   .then(response => response.json())
   .then((data) => {
@@ -37,8 +43,8 @@ const App = () => {
         </div>
           <Track tracking={tracking} setTracking={setTracking} handleTrack={handleTrack}/>
         <div className="card-container">
-          <List />
-          <Detail />
+          <List shipments={shipments} setSelectedItem={setSelectedItem}/>
+          <Detail selectedItem={selectedItem} />
         </div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
