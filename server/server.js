@@ -17,6 +17,9 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
+app.get('/users/create', (req, res) => {
+  res.status.length(200).json(res.locals.newUser);
+})
 
 
 // catch-all route handler for any requests to an unknown route
