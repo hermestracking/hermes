@@ -3,6 +3,8 @@ const express = require('express');
 const userController = require('./controllers/userController');
 const app = express();
 
+const trackerController = require('../trackerController.js');
+
 const PORT = 3000;
 /**
  * handle parsing request body
@@ -24,6 +26,12 @@ app.post('/users/create', userController.addUser, (req, res) => {
 
 app.get('/users/get', userController.getUsers, (req, res) => {
   res.status(200).json(res.locals.users);
+})
+
+//****API CALL****
+app.get('/api/test', trackerController.getInfo, (req, res) => {
+  //console.log(res.locals)
+  return res.status(200).json(res.locals)
 })
 
 
