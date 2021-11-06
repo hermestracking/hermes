@@ -1,0 +1,48 @@
+{
+  "name": "Hermes",
+  "version": "1.0.0",
+  "description": "Hermes Delivery Tracking Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "build": "export NODE_ENV=production; webpack",
+    "dev": "export NODE_ENV=development; webpack serve --open & nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hermestracking/hermes.git"
+  },
+  "author": "Hermes Tracking",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hermestracking/hermes/issues"
+  },
+  "homepage": "https://github.com/hermestracking/hermes#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  }
+}
