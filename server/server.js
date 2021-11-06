@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const userController = require('./controllers/userController');
 const app = express();
+const cors = require('cors');
 
 const trackerController = require('../trackerController.js');
 
@@ -9,6 +10,7 @@ const PORT = 3000;
 /**
  * handle parsing request body
  */
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,7 +31,7 @@ app.get('/users/get', userController.getUsers, (req, res) => {
 })
 
 //****API CALL****
-app.get('/api/test', trackerController.getInfo, (req, res) => {
+app.post('/api/test', trackerController.getInfo, (req, res) => {
   //console.log(res.locals)
   return res.status(200).json(res.locals)
 })
