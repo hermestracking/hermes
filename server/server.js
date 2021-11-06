@@ -32,7 +32,7 @@ app.post('/user/signup', userController.addUser, (req, res) => {
   res.send('Success! User registered')
 })
 
-app.post('/user/signin', (req, res) => {
+app.post('/user/signin', userController.findUser, (req, res) => {
   res.send('Success! User signed in')
 });
 
