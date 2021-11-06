@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+const trackerController = require('../trackerController.js');
+
 const PORT = 3000;
 /**
  * handle parsing request body
@@ -17,6 +19,12 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
+
+//****API CALL****
+app.get('/api/test', trackerController.getInfo, (req, res) => {
+  //console.log(res.locals)
+  return res.status(200).json(res.locals)
+})
 
 
 // catch-all route handler for any requests to an unknown route
