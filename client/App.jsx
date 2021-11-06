@@ -22,7 +22,7 @@ const App = () => {
             <h3 className="log-out-button">Log Out</h3>
           </div>
         </div>
-          <Track />
+          <Track tracking={tracking} setTracking={setTracking} />
         <div className="card-container">
           <List />
           <Detail />
