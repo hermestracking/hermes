@@ -4,7 +4,7 @@ const userController = require('./controllers/userController');
 const app = express();
 const cors = require('cors');
 
-const trackerController = require('../trackerController.js');
+const trackerController = require('./controllers/trackerController');
 
 const PORT = 3000;
 /**
