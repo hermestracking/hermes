@@ -20,6 +20,11 @@ body {
 .logo-wrapper {
   display: flex;
   align-items: center;
+  transition: all 0.8s;
+}
+
+.logo-wrapper:hover {
+  margin-left: 1rem;
 }
 
 .app-header {
@@ -36,7 +41,7 @@ body {
 
 .log-out-wrapper {
   margin-top: -3rem;
-  margin-right: 2.7rem;
+  margin-right: 2.8rem;
 }
 
 .log-out-button {
@@ -51,7 +56,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 4.5rem;
 }
 
 .tracking-input-field {
@@ -91,10 +96,10 @@ body {
 }
 
 .track-button {
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
   width: 6.4rem;
   height: 2.7rem;
-  border-radius: 0.6rem;
+  border-radius: 0.5rem;
   border: 1px solid $grey;
   outline: none;
   font-size: 1.32rem;
@@ -105,7 +110,7 @@ body {
 }
 
 .card-container {
-  margin-top: 10rem;
+  margin-top: 11rem;
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
@@ -127,10 +132,62 @@ body {
 }
 
 .list-header {
-  font-size: 1.6rem;
+  font-size: 1.58rem;
   font-weight: 100;
   margin-left: 1.4rem;
   margin-top: 0;
+  text-align: center;
+  padding-right: 1rem;
+}
+
+.item-container {
+  display: flex;
+  position: relative;
+  margin-left: 1.61rem;
+  margin-top: 2.2rem;
+  margin-bottom: -0.6rem;
+  border: 0.5px solid $grey;
+  border-radius: 0.4rem;
+  height: 2.8rem;
+  width: 92%;
+  cursor: pointer;
+}
+
+.color-code {
+  position: absolute;
+  margin-top: 0.45rem;
+  margin-left: 0.6rem;
+  height: 1.8rem;
+  width: 1.8rem;
+  border: 0.5px solid $grey;
+  border-radius: 0.2rem;
+  font-weight: 100;
+}
+
+.shipment-label {
+  margin-left: 4rem;
+  margin-top: 0.7rem;
+  font-size: 1.15rem;
+  font-weight: 100;
+  width: 108%;
+  height: 2.8rem;
+  outline: none;
+  text-decoration: none;
+}
+
+.item-buttons {
+  display: flex;
+  position: absolute;
+  right: 2rem;
+}
+
+.remove-button {
+  margin-top: 0.7rem;
+  height: 1rem;
+  margin-right: -5rem;
+  width: auto;
+  cursor: pointer;
+  padding: 0.2rem;
 }
 
 .detail-view-container {
@@ -153,4 +210,25 @@ body {
   font-weight: 100;
   margin-left: 1.4rem;
   margin-top: 0;
+  text-align: center;
+  padding-right: 1rem;
+}
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.tracking-number {
+  font-size: 1.3rem;
+  font-weight: 100;
+  margin-left: 3rem;
+  margin-top: 2rem;
+}
+
+.expected-delivery {
+  font-size: 1.3rem;
+  font-weight: 100;
+  margin-left: 3rem;
+  margin-top: 2rem;
 }
