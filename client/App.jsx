@@ -4,6 +4,7 @@ import Track from './components/Track';
 import List from './components/List';
 import Detail from './components/Detail';
 import Wing from './public/images/sprint.png'; 
+import { v4 as uuidv4 } from 'uuid';
 import './stylesheets/styles.scss';
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
   console.log(shipments)
 
   const handleTrack = (tracking) => {
-    const body = {tracking}
+    const body = { tracking }
     console.log(body)
     fetch('http://localhost:8080/api/test', {
     method: 'POST',
@@ -24,7 +25,9 @@ const App = () => {
   })
   .then(response => response.json())
   .then((data) => {
+    data.id = uuidv4(); 
     console.log(data)
+    setSelectedItem({})
     setShipments([...shipments, data]);
   })
   }
@@ -41,10 +44,10 @@ const App = () => {
             <h3 className="log-out-button">Log Out</h3>
           </div>
         </div>
-          <Track tracking={tracking} setTracking={setTracking} handleTrack={handleTrack}/>
+          <Track tracking={tracking} setTracking={setTracking} handleTrack={handleTrack} />
         <div className="card-container">
-          <List shipments={shipments} setSelectedItem={setSelectedItem}/>
-          <Detail selectedItem={selectedItem} />
+          <List shipments={shipments} setShipments={setShipments} setSelectedItem={setSelectedItem} />
+          <Detail selectedItem={selectedItem} shipments={shipments} />
         </div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -54,7 +57,7 @@ const App = () => {
           <Route path="/">
           </Route>
         </Switch>
-      </div>
+      </div> 
     </Router>
   );
 };
