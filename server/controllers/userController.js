@@ -1,5 +1,6 @@
 const model = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+const { connect } = require('mongoose');
 const userController = {};
 
 userController.addUser = (req, res, next) => {
@@ -43,13 +44,21 @@ userController.findUser = (req, res, next) => {
   try {
     const { email, password } = req.body;
     model.User.findOne({ email: email }).then((user) => {
-      console.log(user);
-      console.log(user.password)
-      bcrypt.compare(password, user.password, (err, res) => {
+      res.locals.user = null;
+
+      if (!user) {
+        res.locals.userFound = false;
+        return next();
+      } else res.locals.userFound = true;
+
+      bcrypt.compare(password, user.password, (err, result) => {
+        res.locals.userVerified = result;
+        console.log(res.locals.userVerified);
         if (err) return next(err);
-        console.log(res);
+        if (res.locals.userVerified) res.locals.user = user;
+        return next();
       });
-      return next();
+
     });
   } catch (err) {
     return next(err);

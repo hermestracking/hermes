@@ -31,11 +31,20 @@ app.get('/user/get', userController.getUsers, (req, res) => {
 })
 
 app.post('/user/signup', userController.addUser, (req, res) => {
-  res.send('Success! User registered')
-})
+  res.send(res.locals.newUser);
+});
 
 app.post('/user/signin', userController.findUser, (req, res) => {
-  res.send('Success! User signed in')
+  const response = {
+    userFound: res.locals.userFound,
+    userVerified: res.locals.userVerified,
+    user: res.locals.user
+  };
+  
+  if (response.userFound && response.userFound) {
+    res.statusCode = 200;
+  } else res.statusCode = 401;
+  res.send(response);
 });
 
 //****API CALL****

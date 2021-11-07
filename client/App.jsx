@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import Track from './components/Track';
 import List from './components/List';
 import Detail from './components/Detail';
@@ -13,6 +14,7 @@ const App = () => {
   const [tracking, setTracking] = useState('');
   const [shipments, setShipments] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
 
   console.log(shipments)
 
@@ -48,13 +50,16 @@ const App = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/login">
-            <Login />
+          <Route path="/">
+              <Login 
+                currentUser={currentUser} 
+                setCurrentUser={setCurrentUser}
+            />
           </Route>
           <Route path="/signup">
             {/* <Signup /> */}
           </Route>
-          <Route path="/">
+          <Route path="/home">
             <Home 
               tracking={tracking}
               setTracking={setTracking}
