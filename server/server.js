@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const userController = require('./controllers/userController');
 const app = express();
+const cors = require('cors');
 
 const trackerController = require('../trackerController.js');
 
@@ -9,6 +10,7 @@ const PORT = 3000;
 /**
  * handle parsing request body
  */
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -36,12 +38,11 @@ app.post('/user/signin', userController.findUser, (req, res) => {
   res.send('Success! User signed in')
 });
 
- //****API CALL****
-app.get('/api/test', trackerController.getInfo, (req, res) => {
+//****API CALL****
+app.post('/api/test', trackerController.getInfo, (req, res) => {
   //console.log(res.locals)
   return res.status(200).json(res.locals)
 });
-
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) =>

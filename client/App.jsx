@@ -9,7 +9,26 @@ import './stylesheets/styles.scss';
 const App = () => {
 
   const [tracking, setTracking] = useState('');
-  
+  const [shipments, setShipments] = useState([]);
+  const [selectedItem, setSelectedItem] = useState({});
+
+  console.log(shipments)
+
+  const handleTrack = (tracking) => {
+    const body = {tracking}
+    console.log(body)
+    fetch('http://localhost:8080/api/test', {
+    method: 'POST',
+    headers: {"Content-Type" : "application/json"},
+    body: JSON.stringify(body)
+  })
+  .then(response => response.json())
+  .then((data) => {
+    console.log(data)
+    setShipments([...shipments, data]);
+  })
+  }
+
   return (
     <Router>
       <div className="body-wrapper">
@@ -22,10 +41,10 @@ const App = () => {
             <h3 className="log-out-button">Log Out</h3>
           </div>
         </div>
-          <Track tracking={tracking} setTracking={setTracking} />
+          <Track tracking={tracking} setTracking={setTracking} handleTrack={handleTrack}/>
         <div className="card-container">
-          <List />
-          <Detail />
+          <List shipments={shipments} setSelectedItem={setSelectedItem}/>
+          <Detail selectedItem={selectedItem} />
         </div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

@@ -7,8 +7,9 @@ const trackerController = {};
 trackerController.getInfo = (req, res, next) => {
 
 // //const URL = `https://api.discogs.com/users/${USER_ID}/collection/folders/${QUEUE_ID}/releases?User-Agent="collector/1.0"&token=${USER_TOKEN}`;
-const URL = `https://onlinetools.ups.com/track/v1/details/7798339175?locale=en_US`;
-//const URL = `https://onlinetools.ups.com/track/v1/details/${req.body}?locale=en_US`;
+//const URL = `https://onlinetools.ups.com/track/v1/details/7798339175?locale=en_US`;
+console.log("attempting to hit URL", req.body.tracking)
+const URL = `https://onlinetools.ups.com/track/v1/details/${req.body.tracking}?locale=en_US`;
 
     try {
         axios(URL, {
@@ -21,20 +22,21 @@ const URL = `https://onlinetools.ups.com/track/v1/details/7798339175?locale=en_U
         res.locals = {trackingNumber: data.data.trackResponse.shipment[0].package[0].trackingNumber,
                       deliveryDate: data.data.trackResponse.shipment[0].package[0].deliveryDate[0].date,
                       deliveryTime: data.data.trackResponse.shipment[0].package[0].deliveryTime.endTime,
-                      recentActivity: [
-                      data.data.trackResponse.shipment[0].package[0].activity[0],
-                      data.data.trackResponse.shipment[0].package[0].activity[1],
-                      data.data.trackResponse.shipment[0].package[0].activity[2], 
-                      data.data.trackResponse.shipment[0].package[0].activity[3]]
-
+                      recentActivity: []
         };
-        //console.log(res.locals)
+        function activityArray(){
+            for (let i = 0; i < data.data.trackResponse.shipment[0].package[0].activity.length; i++){
+                res.locals.recentActivity.push(data.data.trackResponse.shipment[0].package[0].activity[i])
+            }
+        }
+        activityArray();
         return next();
         });
+
     } catch (err) {
         return next(err);
     }
-
+    
 }
 
 module.exports = trackerController;
