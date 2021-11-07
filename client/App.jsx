@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Login from './components/Login';
 import Track from './components/Track';
 import List from './components/List';
 import Detail from './components/Detail';
@@ -44,17 +45,25 @@ const App = () => {
             <h3 className="log-out-button">Log Out</h3>
           </div>
         </div>
-          <Track tracking={tracking} setTracking={setTracking} handleTrack={handleTrack} />
-        <div className="card-container">
-          <List shipments={shipments} setShipments={setShipments} setSelectedItem={setSelectedItem} />
-          <Detail selectedItem={selectedItem} shipments={shipments} />
-        </div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          {/* <Route path="/newPath">
-          </Route> */}
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            {/* <Signup /> */}
+          </Route>
           <Route path="/">
+            <Home 
+              tracking={tracking}
+              setTracking={setTracking}
+              handleTrack={handleTrack}
+              shipments={shipments}
+              setShipments={setShipments}
+              setSelectedItem={setSelectedItem}
+              selectedItem={selectedItem}
+            />
           </Route>
         </Switch>
       </div> 
@@ -62,6 +71,26 @@ const App = () => {
   );
 };
 
+const Home = ({
+  tracking,
+  setTracking,
+  handleTrack,
+  shipments,
+  setShipments,
+  setSelectedItem,
+  selectedItem
+} = props) => {
 
+  return (
+    <React.Fragment>
+          <Track tracking={tracking} setTracking={setTracking} handleTrack={handleTrack} />
+        <div className="card-container">
+          <List shipments={shipments} setShipments={setShipments} setSelectedItem={setSelectedItem} />
+          <Detail selectedItem={selectedItem} shipments={shipments} />
+        </div>
+    </React.Fragment>
+  )
+
+}
 
 export default App;
