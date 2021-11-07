@@ -22,20 +22,27 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
-app.post('/users/create', userController.addUser, (req, res) => {
+app.post('/user/create', userController.addUser, (req, res) => {
   res.status(200).json(res.locals.newUser);
 })
 
-app.get('/users/get', userController.getUsers, (req, res) => {
+app.get('/user/get', userController.getUsers, (req, res) => {
   res.status(200).json(res.locals.users);
 })
+
+app.post('/user/signup', userController.addUser, (req, res) => {
+  res.send('Success! User registered')
+})
+
+app.post('/user/signin', userController.findUser, (req, res) => {
+  res.send('Success! User signed in')
+});
 
 //****API CALL****
 app.post('/api/test', trackerController.getInfo, (req, res) => {
   //console.log(res.locals)
   return res.status(200).json(res.locals)
-})
-
+});
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) =>
