@@ -17,7 +17,9 @@ const Calendar = (props) => {
 
   return (
     <React.Fragment>
-      <div className="week-wrapper">{weekdayArr}</div>
+      <div className="week-wrapper">
+          {weekdayArr}
+      </div>
     </React.Fragment>
   );
 };
