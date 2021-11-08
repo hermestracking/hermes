@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Login = ({ currentUser, setCurrentUser } = props) => {
+const Login = ({
+  currentUser,
+  setCurrentUser,
+  isUserAuthenticated,
+  setIsUserAuthenticated,
+} = props) => {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
   });
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
   const handleChange = (e) => {
     const { type, value } = e.target;
@@ -28,9 +32,8 @@ const Login = ({ currentUser, setCurrentUser } = props) => {
         const { userFound, userVerified, user } = res.data;
         if (userFound && userVerified) {
           console.log('Success! Logged in');
-          setIsUserAuthenticated(prev => !prev);
-          console.log(isUserAuthenticated);
           setCurrentUser(user);
+          setIsUserAuthenticated(true);
           // console.log(currentUser);
         } else {
           console.log("Username and password don't match...");
