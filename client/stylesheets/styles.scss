@@ -56,7 +56,8 @@ body {
 .log-out-button {
   font-weight: 200;
   cursor: pointer;
-  
+  text-decoration: none;
+
   a {
     text-decoration: none;
   }
@@ -142,6 +143,14 @@ body {
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
+}
+
+.empty-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 12.8rem;
+  color: $grey;
+  margin-top: 9rem;
 }
 
 .list-view-container {
@@ -265,10 +274,11 @@ body {
 
 .google-map {
   height: auto;
-  width: 70%;
+  width: 65%;
   margin: auto;
   margin-top: 3rem;
   border-radius: 0.4rem;
+  overflow-y: scroll;
 }
 
 // LOGIN PAGE
@@ -468,7 +478,7 @@ body {
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
-  margin-top: 3rem;
+  margin-top: 2.7rem;
   margin-left: 0rem;
   transition: all 0.4s;
 }
@@ -495,65 +505,12 @@ body {
 }
 
 .calendar-header {
-  font-size: 1.6rem;
-  font-weight: 100;
-  margin-left: 1.4rem;
-  margin-top: 0;
-  text-align: center;
-  padding-right: 1rem;
+  height: 2.5rem;
+  font-weight: 150;
+  background-color: $off-white;
+  border-radius: 0.5rem 0.5rem 0 0;
+  // padding-top: 0.6rem;
+  // padding-left: 1.7rem;
+  // padding-right: 1.7rem;
+  // padding-bottom: 0.2rem;
 }
-
-.calendar-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.calendar-number {
-  font-size: 1.3rem;
-  font-weight: 100;
-  margin-left: 3rem;
-  margin-top: 2rem;
-}
-
-.carlendar-delivery {
-  font-size: 1.3rem;
-  font-weight: 100;
-  margin-left: 3rem;
-  margin-top: 2rem;
-}
-
-// .calendar-wrapper {
-//   padding-top: 1.6rem;
-//   padding-left: 2rem;
-//   padding-right: 1.4rem;
-//   padding-bottom: 2.5rem;
-//   width: 100vw;
-// }
-
-// .calendar-left-header {
-//   height: 2.5rem;
-//   font-weight: 400;
-//   color: $off-white;
-//   background-color: $teal;
-//   border-radius: 0.5rem 0.5rem 0 0;
-//   width: 15vw;
-//   border: 1px solid $teal;
-//   // padding-top: 0.6rem;
-//   // padding-left: 1.7rem;
-//   // padding-right: 1.7rem;
-//   // padding-bottom: 0.2rem;
-// }
-
-// .calendar-header {
-//   height: 2.5rem;
-//   font-weight: 200;
-//   color: $off-white;
-//   background-color: $teal;
-//   border-radius: 0.5rem 0.5rem 0 0;
-//   width: 15vw;
-//   border: 1px solid $teal;
-//   // padding-top: 0.6rem;
-//   // padding-left: 1.7rem;
-//   // padding-right: 1.7rem;
-//   // padding-bottom: 0.2rem;
-// }
