@@ -52,8 +52,9 @@ app.post('/user/signin', userController.authenticateUser, (req, res) => {
 });
 
 app.post('/user/updateTracking', userController.updateTracking, (req, res) => {
-  res.status(201).json(res.locals.tracking)
-})
+  // res.status(201).json(res.locals.tracking)
+  res.status(201).json('test')
+});
 
 //****API CALL****
 app.post('/api/test', trackerController.getInfo, (req, res) => {

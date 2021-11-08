@@ -43,9 +43,9 @@ userController.getUsers = (req, res, next) => {
 userController.getUser = (req, res, next) => {
   try {
     const { email } = req.body;
-    model.User.findOne({email: email}).then((user) => {
+    model.User.findOne({ email: email }).then((user) => {
       res.locals.user = user;
-    })
+    });
   } catch (err) {
     return next(err);
   }
@@ -69,7 +69,6 @@ userController.authenticateUser = (req, res, next) => {
         if (res.locals.userVerified) res.locals.user = user;
         return next();
       });
-
     });
   } catch (err) {
     return next(err);
@@ -77,22 +76,39 @@ userController.authenticateUser = (req, res, next) => {
 };
 
 userController.updateTracking = (req, res, next) => {
-  try {
-    console.log(req.body)
-  const { email, tracking } = req.body
-  // const newTrackingNumber = new trackingNumber({number: trackingNumber.number, label: trackingNumber.label});
+  console.log('request body: ', req.body)
+  const { email, tracking } = req.body;
   if (tracking.length > 0) {
-    model.User.findOneAndUpdate({ email: email }, { tracking: tracking })
-      .then((err, user) => {
-        console.log(user);
-        if (err) return next(err);
-        res.locals.tracking = user.tracking;
-        return next();
-      })
+    model.User.findOne(
+      { email: email }
+    ).then((err, user) => {
+      if (err) return next(err);
+      console.log('User: ', user);
+      res.locals.tracking = user.tracking;
+      return next();
+    })
   }
-  } catch (err) {
-    console.log(err);
-  }
-}
+  else return next();
+
+  // try {
+  //   console.log(req.body);
+  //   const { email, tracking } = req.body;
+  //   // const newTrackingNumber = new trackingNumber({number: trackingNumber.number, label: trackingNumber.label});
+  //   if (tracking.length > 0) {
+  //     model.User.findOneAndUpdate(
+  //       { email: email },
+  //       { tracking: tracking }
+  //     ).then((err, user) => {
+  //       console.log(user);
+  //       if (err) return next(err);
+  //       res.locals.tracking = user.tracking;
+  //       return next();
+  //     });
+  //   } else return next();
+  // } catch (err) {
+  //   console.log(err);
+  //   return next(err);
+  // }
+};
 
 module.exports = userController;

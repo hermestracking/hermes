@@ -164,14 +164,16 @@ const Home = ({
   }, [])
 
   useEffect(() => {
-    console.log('updating tracking!')
     fetch('/user/updateTracking', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email: currentUser.email, tracking: [...shipments]})
+      body: JSON.stringify({email: currentUser.email, tracking: shipments})
     })
-      .then(res => res.json())
-      .then(res => console.log(res))
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      console.log('updating tracking!')
+      })
       .catch((err) => console.log(err))
   }, [shipments])
 
