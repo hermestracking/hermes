@@ -235,6 +235,14 @@ body {
   border-radius: 0.7rem;
 }
 
+.empty-detail-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 12rem;
+  color: $grey;
+  margin-top: 8.3rem;
+}
+
 .detail-header-wrapper {
   height: 2.4rem;
   border-bottom: 1px solid $teal;
