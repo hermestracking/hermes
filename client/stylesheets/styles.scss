@@ -56,8 +56,8 @@ body {
 .log-out-button {
   font-weight: 300;
   cursor: pointer;
-  text-decoration: none;
 
+  text-decoration: none;
   a {
     text-decoration: none;
   }
@@ -495,7 +495,7 @@ body {
   padding-top: 1rem;
   padding-left: 1.6rem;
   padding-right: 1rem;
-  display:flex;
+  display: flex;
 }
 
 .day-header {
@@ -512,7 +512,7 @@ body {
   justify-content: center;
 }
 
-.bullet-body{
+.bullet-body {
   text-align: center;
   width: 98%;
   height: 100%;
@@ -529,7 +529,7 @@ body {
   align-items: center;
 }
 
-.day-body{
+.day-body {
   text-align: center;
   width: 98%;
   height: 100%;
@@ -544,82 +544,3 @@ body {
   flex-direction: row;
   margin-top: 0.3rem;
 }
-
-// .calendar-view-container {
-//   height: 80vh;
-//   width: 46%;
-//   border: 1px solid $grey;
-//   border-radius: 0.5rem;
-// }
-
-// .calendar-header-wrapper {
-//   height: 2.5rem;
-//   border-bottom: 1px solid $grey;
-//   background-color: $off-white;
-//   border-radius: 0.5rem 0.5rem 0 0;
-//   padding-top: 0.6rem;
-// }
-
-// .calendar-header {
-//   font-size: 1.6rem;
-//   font-weight: 100;
-//   margin-left: 1.4rem;
-//   margin-top: 0;
-//   text-align: center;
-//   padding-right: 1rem;
-// }
-
-// .calendar-body {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .calendar-number {
-//   font-size: 1.3rem;
-//   font-weight: 100;
-//   margin-left: 3rem;
-//   margin-top: 2rem;
-// }
-
-// .carlendar-delivery {
-//   font-size: 1.3rem;
-//   font-weight: 100;
-//   margin-left: 3rem;
-//   margin-top: 2rem;
-// }
-
-// .calendar-wrapper {
-//   padding-top: 1.6rem;
-//   padding-left: 2rem;
-//   padding-right: 1.4rem;
-//   padding-bottom: 2.5rem;
-//   width: 100vw;
-// }
-
-// .calendar-left-header {
-//   height: 2.5rem;
-//   font-weight: 400;
-//   color: $off-white;
-//   background-color: $teal;
-//   border-radius: 0.5rem 0.5rem 0 0;
-//   width: 15vw;
-//   border: 1px solid $teal;
-//   // padding-top: 0.6rem;
-//   // padding-left: 1.7rem;
-//   // padding-right: 1.7rem;
-//   // padding-bottom: 0.2rem;
-// }
-
-// .calendar-header {
-//   height: 2.5rem;
-//   font-weight: 200;
-//   color: $off-white;
-//   background-color: $teal;
-//   border-radius: 0.5rem 0.5rem 0 0;
-//   width: 15vw;
-//   border: 1px solid $teal;
-//   // padding-top: 0.6rem;
-//   // padding-left: 1.7rem;
-//   // padding-right: 1.7rem;
-//   // padding-bottom: 0.2rem;
-// }
