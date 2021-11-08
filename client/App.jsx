@@ -15,8 +15,9 @@ const App = () => {
   const [shipments, setShipments] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(true);
 
+  const colorArr = ["#986b53", "#f50422", "#983f7a", "#ea24a3"]
   console.log(shipments);
 
   const handleTrack = (tracking) => {
@@ -29,9 +30,11 @@ const App = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        
         data.id = uuidv4();
         console.log(data);
         setSelectedItem({});
+        data.color = colorArr[Math.floor(Math.random()*colorArr.length)];
         setShipments([...shipments, data]);
       });
   };
@@ -114,7 +117,7 @@ const Home = ({
         <Detail selectedItem={selectedItem} shipments={shipments} />
       </div>
       <div className="calendar-container">
-          <Calendar />
+          <Calendar shipments={shipments}/>
         </div>
     </React.Fragment>
   );
