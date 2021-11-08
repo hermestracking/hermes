@@ -148,7 +148,7 @@ body {
 .empty-message {
   font-size: 1.5rem;
   font-weight: 300;
-  margin-left: 12.8rem;
+  margin-left: 12.5rem;
   color: $grey;
   margin-top: 9rem;
 }
@@ -206,7 +206,7 @@ body {
   margin-left: 4rem;
   margin-top: 0.7rem;
   font-size: 1.15rem;
-  font-weight: 200;
+  font-weight: 300;
   width: 108%;
   height: 2.8rem;
   outline: none;
@@ -260,14 +260,15 @@ body {
 
 .tracking-number {
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 3rem;
   margin-top: 2rem;
+  // font-weight: bold;
 }
 
 .expected-delivery {
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 3rem;
   margin-top: 1.5rem;
 }
@@ -276,7 +277,7 @@ body {
   height: auto;
   width: 65%;
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-radius: 0.4rem;
   overflow-y: scroll;
 }
