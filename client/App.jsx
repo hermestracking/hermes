@@ -14,7 +14,7 @@ const App = () => {
   const [shipments, setShipments] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(true);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
   console.log(shipments);
 
@@ -47,12 +47,22 @@ const App = () => {
             <h3 className="log-out-button">Log Out</h3>
           </div>
         </div>
+        {/* <Signup /> */}
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          {/* <Route path="/">
+          <Route path="/">
           { isUserAuthenticated 
-            ? <Redirect to="/home" />
+            ? 
+            <Home
+            tracking={tracking}
+            setTracking={setTracking}
+            handleTrack={handleTrack}
+            shipments={shipments}
+            setShipments={setShipments}
+            setSelectedItem={setSelectedItem}
+            selectedItem={selectedItem}
+          />
             : <Login
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
@@ -60,11 +70,11 @@ const App = () => {
                 setIsUserAuthenticated={setIsUserAuthenticated}
               />
           }
-          </Route> */}
+          </Route> 
           <Route path="/signup">{/* <Signup /> */}</Route>
           {/* <Route path="/home"> */}
-          <Route path="/">
-            <Home
+          <Route path="/home">
+          <Home
               tracking={tracking}
               setTracking={setTracking}
               handleTrack={handleTrack}
