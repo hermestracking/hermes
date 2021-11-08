@@ -26,11 +26,9 @@ const App = () => {
   const [navBtnText, setNavBtnText] = useState('');
   const [navBtnLink, setNavBtnLink] = useState('');
 
-  console.log(shipments);
 
   const handleTrack = (tracking) => {
     const body = { tracking };
-    console.log(body);
     fetch('http://localhost:8080/api/test', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,7 +37,7 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         data.id = uuidv4();
-        console.log(data);
+        // console.log(data);
         setSelectedItem({});
         setShipments([...shipments, data]);
       });
@@ -118,6 +116,8 @@ const App = () => {
               setNavBtnLink={setNavBtnLink}
               navBtnText={navBtnText}
               setNavBtnText={setNavBtnText}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
             />
           </Route>
         </Switch>
@@ -138,11 +138,37 @@ const Home = ({
   setNavBtnLink,
   navBtnText,
   setNavBtnText,
+  currentUser,
+  setCurrentUser,
 } = props) => {
+  console.log('The current user is:  ', currentUser);
   useEffect(() => {
     setNavBtnText('Log Out');
     setNavBtnLink('/login');
   }, []);
+
+  useEffect(() => {
+    console.log('refreshing user data!')
+    fetch('/user')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setCurrentUser(data)
+        if (currentUser.tracking && currentUser.tracking.length > 0)
+        setShipments([currentUser.tracking])
+      })
+  }, [])
+
+  useEffect(() => {
+    console.log('updating tracking!')
+    fetch('/user/updateTracking', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email: currentUser.email, tracking: [...shipments]})
+    })
+  }, [shipments])
+
+
 
   return (
     <React.Fragment>

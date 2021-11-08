@@ -26,7 +26,7 @@ const Login = ({
     }));
   };
 
-  const handleLoginClick = (e) => {
+  const handleLoginClick = () => {
     console.log('Credentials', credentials);
     axios('/user/signin', {
       method: 'POST',
@@ -37,9 +37,9 @@ const Login = ({
         const { userFound, userVerified, user } = res.data;
         if (userFound && userVerified) {
           console.log('Success! Logged in');
+          console.log(user);
           setCurrentUser(user);
           setIsUserAuthenticated(true);
-          // console.log(currentUser);
         } else {
           console.log("Username and password don't match...");
           // TODO: user notification to the effect of this console log

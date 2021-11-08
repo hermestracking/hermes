@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 /**
- * define route handlers
+ * USER ROUTE HANDLERS
  */
 app.post('/user/create', userController.addUser, (req, res) => {
   res.status(200).json(res.locals.newUser);
@@ -30,11 +30,15 @@ app.get('/user/get', userController.getUsers, (req, res) => {
   res.status(200).json(res.locals.users);
 })
 
+app.get('/user/getUser', userController.getUser, (req, res) => {
+  res.status(200).json(res.locals.user);
+})
+
 app.post('/user/signup', userController.addUser, (req, res) => {
   res.send(res.locals.newUser);
 });
 
-app.post('/user/signin', userController.findUser, (req, res) => {
+app.post('/user/signin', userController.authenticateUser, (req, res) => {
   const response = {
     userFound: res.locals.userFound,
     userVerified: res.locals.userVerified,
@@ -46,6 +50,10 @@ app.post('/user/signin', userController.findUser, (req, res) => {
   } else res.statusCode = 401;
   res.send(response);
 });
+
+app.post('/user/updateTracking', userController.updateTracking, (req, res) => {
+  res.status(201).json(res.locals.tracking)
+})
 
 //****API CALL****
 app.post('/api/test', trackerController.getInfo, (req, res) => {
