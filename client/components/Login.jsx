@@ -26,6 +26,12 @@ const Login = ({
     }));
   };
 
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      handleLoginClick(e); 
+  }
+}
+
   const handleLoginClick = (e) => {
     console.log('Credentials', credentials);
     axios('/user/signin', {
@@ -76,10 +82,11 @@ const Login = ({
             placeholder="Enter your password"
             value={credentials.password}
             onChange={handleChange}
+            onKeyDown={handleEnter}
           />
           <div className="password-line"></div>
         </div>
-        <button type="sumbit" className="login-button" onClick={handleLoginClick}>
+        <button type="submit" className="login-button" onClick={handleLoginClick} >
           Login
         </button>
       </div>
