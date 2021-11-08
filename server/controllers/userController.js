@@ -85,7 +85,6 @@ userController.updateTracking = (req, res, next) => {
       res.locals.tracking = user.tracking;
       return next();
     })
-  return next();
 }
 
 module.exports = userController;
