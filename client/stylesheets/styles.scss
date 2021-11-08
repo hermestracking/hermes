@@ -56,6 +56,14 @@ body {
 .log-out-button {
   font-weight: 200;
   cursor: pointer;
+  
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: $black;
+  }
 }
 
 // TRACKING INPUT BAR
@@ -109,15 +117,22 @@ body {
 .track-button {
   margin-top: 1.5rem;
   width: 6.4rem;
-  height: 2.7rem;
-  border-radius: 0.5rem;
-  border: 1px solid $grey;
+  height: 2.65rem;
+  border-radius: 0.4rem;
+  border: 2px solid $teal;
   outline: none;
   font-size: 1.32rem;
-  font-weight: 200;
+  font-weight: 300;
   font-family: "Inter", sans-serif;
   cursor: pointer;
-  background-color: $off-white;
+  color: white;
+  background-color: $teal;
+  transition: all 0.2s;
+}
+
+.track-button:hover {
+  background-color: white;
+  color: $teal;
 }
 
 // LIST & DETAIL VIEWS
@@ -130,27 +145,28 @@ body {
 }
 
 .list-view-container {
-  height: 80vh;
+  height: 43rem;
   width: 46%;
-  border: 1px solid $grey;
-  border-radius: 0.5rem;
+  border: 1px solid $teal;
+  border-radius: 0.7rem;
 }
 
 .list-header-wrapper {
-  height: 2.5rem;
-  border-bottom: 1px solid $grey;
-  background-color: $off-white;
+  height: 2.4rem;
+  border-bottom: 1px solid $teal;
+  background-color: $teal;
   border-radius: 0.5rem 0.5rem 0 0;
   padding-top: 0.6rem;
 }
 
 .list-header {
   font-size: 1.58rem;
-  font-weight: 100;
+  font-weight: 300;
   margin-left: 1.4rem;
   margin-top: 0;
   text-align: center;
   padding-right: 1rem;
+  color: white;
 }
 
 .item-container {
@@ -181,7 +197,7 @@ body {
   margin-left: 4rem;
   margin-top: 0.7rem;
   font-size: 1.15rem;
-  font-weight: 100;
+  font-weight: 200;
   width: 108%;
   height: 2.8rem;
   outline: none;
@@ -204,27 +220,28 @@ body {
 }
 
 .detail-view-container {
-  height: 80vh;
+  height: 43rem;
   width: 46%;
-  border: 1px solid $grey;
-  border-radius: 0.5rem;
+  border: 1px solid $teal;
+  border-radius: 0.7rem;
 }
 
 .detail-header-wrapper {
-  height: 2.5rem;
-  border-bottom: 1px solid $grey;
-  background-color: $off-white;
+  height: 2.4rem;
+  border-bottom: 1px solid $teal;
+  background-color: $teal;
   border-radius: 0.5rem 0.5rem 0 0;
   padding-top: 0.6rem;
 }
 
 .detail-header {
   font-size: 1.6rem;
-  font-weight: 100;
+  font-weight: 300;
   margin-left: 1.4rem;
   margin-top: 0;
   text-align: center;
   padding-right: 1rem;
+  color: white;
 }
 
 .detail-body {
@@ -233,17 +250,25 @@ body {
 }
 
 .tracking-number {
-  font-size: 1.3rem;
-  font-weight: 100;
+  font-size: 1.1rem;
+  font-weight: 200;
   margin-left: 3rem;
   margin-top: 2rem;
 }
 
 .expected-delivery {
-  font-size: 1.3rem;
-  font-weight: 100;
+  font-size: 1.1rem;
+  font-weight: 200;
   margin-left: 3rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+}
+
+.google-map {
+  height: auto;
+  width: 70%;
+  margin: auto;
+  margin-top: 3rem;
+  border-radius: 0.4rem;
 }
 
 // LOGIN PAGE
@@ -319,12 +344,18 @@ body {
   height: 2.75rem;
   width: 17.5rem;
   background-color: $teal;
-  border: 1px solid $teal;
+  border: 2px solid $teal;
   border-radius: 5rem;
   font-family: "Inter", sans-serif;
   font-size: 1.2rem;
   color: white;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.login-button:hover {
+  background-color: white;
+  color: $teal;
 }
 
 .box-wrapper {

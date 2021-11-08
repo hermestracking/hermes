@@ -26,9 +26,9 @@ const userSchema = new Schema({
     address2: String,
     city: { type: String, required: true },
     state: { type: String, required: true },
-    zip: { type: Number, required: true },
+    zip: { type: String, required: true },
   },
-  trackingNumbers: { type: Number },
+  trackingNumbers: { type: String },
 });
 
 userSchema.pre('save', function(next) {
