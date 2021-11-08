@@ -54,8 +54,9 @@ body {
 }
 
 .log-out-button {
-  font-weight: 200;
+  font-weight: 300;
   cursor: pointer;
+  text-decoration: none;
 
   a {
     text-decoration: none;
@@ -86,7 +87,7 @@ body {
   outline: none;
   padding-left: 1.5rem;
   font-size: 1.2rem;
-  font-weight: 200;
+  font-weight: 300;
   font-family: "Inter", sans-serif;
 }
 
@@ -144,6 +145,14 @@ body {
   justify-content: space-evenly;
 }
 
+.empty-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 12.5rem;
+  color: $grey;
+  margin-top: 9rem;
+}
+
 .list-view-container {
   height: 43rem;
   width: 46%;
@@ -197,7 +206,7 @@ body {
   margin-left: 4rem;
   margin-top: 0.7rem;
   font-size: 1.15rem;
-  font-weight: 200;
+  font-weight: 300;
   width: 108%;
   height: 2.8rem;
   outline: none;
@@ -251,24 +260,26 @@ body {
 
 .tracking-number {
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 3rem;
   margin-top: 2rem;
+  // font-weight: bold;
 }
 
 .expected-delivery {
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 3rem;
   margin-top: 1.5rem;
 }
 
 .google-map {
   height: auto;
-  width: 70%;
+  width: 65%;
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-radius: 0.4rem;
+  overflow-y: scroll;
 }
 
 // LOGIN PAGE
@@ -468,7 +479,7 @@ body {
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
-  margin-top: 3rem;
+  margin-top: 2.7rem;
   margin-left: 0rem;
   transition: all 0.4s;
 }
@@ -501,6 +512,23 @@ body {
   justify-content: center;
 }
 
+.bullet-body{
+  text-align: center;
+  width: 98%;
+  height: 100%;
+  color: black;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: row;
+  padding-left: 4rem;
+  align-items: center;
+}
+
 .day-body{
   text-align: center;
   width: 98%;
@@ -514,6 +542,7 @@ body {
   font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: row;
+  margin-top: 0.3rem;
 }
 
 // .calendar-view-container {

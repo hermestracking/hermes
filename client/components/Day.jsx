@@ -5,11 +5,11 @@ const Day = (props) => {
   const divArr = [];
   for (let shipment of props.shipments){
     if (shipment.deliveryDate === props.tag){
-      divArr.push(<div className="day-body" style={{ color: shipment.color }}>
-        •
-      <div style={{marginLeft: '5px'}}>Delivery</div>
-      </div>
-      )
+      divArr.push(
+        <div className="bullet-body" style={{ color: shipment.color }}>
+           ▢ <div className="day-body">Delivery</div>
+        </div>
+      );
     }
   }
   return (
