@@ -55,10 +55,10 @@ body {
 }
 
 .log-out-button {
-  font-weight: 200;
+  font-weight: 300;
   cursor: pointer;
-  text-decoration: none;
 
+  text-decoration: none;
   a {
     text-decoration: none;
   }
@@ -88,7 +88,7 @@ body {
   outline: none;
   padding-left: 1.5rem;
   font-size: 1.2rem;
-  font-weight: 200;
+  font-weight: 300;
   font-family: "Inter", sans-serif;
 }
 
@@ -214,7 +214,7 @@ body {
   margin-left: 4rem;
   margin-top: 0.7rem;
   font-size: 1.15rem;
-  font-weight: 200;
+  font-weight: 300;
   width: 108%;
   height: 2.8rem;
   outline: none;
@@ -243,6 +243,14 @@ body {
   border-radius: 0.7rem;
 }
 
+.empty-detail-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 12rem;
+  color: $grey;
+  margin-top: 8.3rem;
+}
+
 .detail-header-wrapper {
   height: 2.4rem;
   border-bottom: 1px solid $teal;
@@ -268,14 +276,15 @@ body {
 
 .tracking-number {
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 3rem;
   margin-top: 2rem;
+  // font-weight: bold;
 }
 
 .expected-delivery {
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   margin-left: 3rem;
   margin-top: 1.5rem;
 }
@@ -498,28 +507,57 @@ body {
 }
 
 //CALENDER
-.calendar-view-container {
-  height: 80vh;
-  width: 46%;
-  border: 1px solid $grey;
-  border-radius: 0.5rem;
+
+.week-wrapper {
+  padding-top: 1rem;
+  padding-left: 1.6rem;
+  padding-right: 1rem;
+  display: flex;
 }
 
-.calendar-header-wrapper {
-  height: 2.5rem;
-  border-bottom: 1px solid $grey;
-  background-color: $off-white;
-  border-radius: 0.5rem 0.5rem 0 0;
-  padding-top: 0.6rem;
+.day-header {
+  float: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: $teal;
+  border-radius: 0.6rem 0.6rem 0 0;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.calendar-header {
-  height: 2.5rem;
-  font-weight: 150;
-  background-color: $off-white;
-  border-radius: 0.5rem 0.5rem 0 0;
-  // padding-top: 0.6rem;
-  // padding-left: 1.7rem;
-  // padding-right: 1.7rem;
-  // padding-bottom: 0.2rem;
+.bullet-body {
+  text-align: center;
+  width: 98%;
+  height: 100%;
+  color: black;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: row;
+  padding-left: 4rem;
+  align-items: center;
+}
+
+.day-body {
+  text-align: center;
+  width: 98%;
+  height: 100%;
+  color: black;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.3rem;
 }

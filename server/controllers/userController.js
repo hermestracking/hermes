@@ -40,7 +40,18 @@ userController.getUsers = (req, res, next) => {
   }
 };
 
-userController.findUser = (req, res, next) => {
+userController.getUser = (req, res, next) => {
+  try {
+    const { email } = req.body;
+    model.User.findOne({ email: email }).then((user) => {
+      res.locals.user = user;
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
+userController.authenticateUser = (req, res, next) => {
   try {
     const { email, password } = req.body;
     model.User.findOne({ email: email }).then((user) => {
@@ -58,11 +69,22 @@ userController.findUser = (req, res, next) => {
         if (res.locals.userVerified) res.locals.user = user;
         return next();
       });
-
     });
   } catch (err) {
     return next(err);
   }
 };
+
+userController.updateTracking = (req, res, next) => {
+  console.log(req.body)
+  const { email, tracking } = req.body
+  // const newTrackingNumber = new trackingNumber({number: trackingNumber.number, label: trackingNumber.label});
+  model.User.findOneAndUpdate({ email: email }, { tracking: tracking })
+    .then((err, user) => {
+      if (err) return next(err);
+      res.locals.tracking = user.tracking;
+      return next();
+    })
+}
 
 module.exports = userController;
