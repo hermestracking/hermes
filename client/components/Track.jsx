@@ -4,9 +4,7 @@ import React from 'react';
 const Track = (props) => {
 
     const handleEnter = (e) => {
-        console.log('working')
         if (e.key === 'Enter') {
-            console.log('Enter')
             props.handleTrack(props.tracking);
             props.setTracking('');
         };

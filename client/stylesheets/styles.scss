@@ -49,7 +49,8 @@ body {
 .log-out-button {
   font-weight: 200;
   cursor: pointer;
-  
+  text-decoration: none;
+
   a {
     text-decoration: none;
   }
@@ -135,6 +136,14 @@ body {
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
+}
+
+.empty-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 12.8rem;
+  color: $grey;
+  margin-top: 9rem;
 }
 
 .list-view-container {
@@ -258,10 +267,11 @@ body {
 
 .google-map {
   height: auto;
-  width: 70%;
+  width: 65%;
   margin: auto;
   margin-top: 3rem;
   border-radius: 0.4rem;
+  overflow-y: scroll;
 }
 
 // LOGIN PAGE
@@ -461,7 +471,7 @@ body {
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
-  margin-top: 3rem;
+  margin-top: 2.7rem;
   margin-left: 0rem;
   transition: all 0.4s;
 }

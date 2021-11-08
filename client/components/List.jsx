@@ -16,9 +16,12 @@ const List = (props) => {
             <div className="list-view-container">
                 <div className="list-header-wrapper">
                     <h2 className="list-header">Deliveries</h2>
+                    {shipArray.length > 0 ?
                     <div className="items-list">
                         {shipArray}
-                    </div>
+                    </div> :
+                    <div className="empty-message"> Add a shipment to track! </div>
+                    }
                 </div>
             </div>
         </React.Fragment>
