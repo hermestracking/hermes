@@ -3,6 +3,7 @@ import ContentEditable from 'react-contenteditable';
 import X from '../public/images/thin x mark.png';
 
 const Item = (props) => {
+    const color = props.shipments.color;
 
     const [reload, setReload] = useState(false);
 
@@ -36,11 +37,14 @@ const Item = (props) => {
             setReload(!reload);
         }
     }
+    let boxColor = {
+        backgroundColor: `${props.order.color}`
+    }
     
     return (
         <React.Fragment>
             <div className="item-container"  onClick={(e) => props.setSelectedItem(props.order)}>
-                <div className="color-code"></div>
+                <div className="color-code" style={boxColor}></div>
                 <ContentEditable className="shipment-label" html={text.current} onChange={handleChange} onClick={renameItem} onKeyDown={enter} onBlur={resetItem} spellCheck="false" />
                 <div className="item-buttons">
                     <img className="remove-button" src={X} onClick={() => props.setShipments(props.shipments.filter(item => item.id !== props.order.id))} />

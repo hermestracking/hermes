@@ -1,39 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   Redirect,
-} from 'react-router-dom';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Track from './components/Track';
-import List from './components/List';
-import Detail from './components/Detail';
-import Wing from './public/images/sprint.png';
-import { v4 as uuidv4 } from 'uuid';
-import './stylesheets/styles.scss';
+} from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Track from "./components/Track";
+import List from "./components/List";
+import Detail from "./components/Detail";
+import Wing from "./public/images/sprint.png";
+import { v4 as uuidv4 } from "uuid";
+import "./stylesheets/styles.scss";
 import Calendar from "./components/Calendar";
 
 const App = () => {
-  const [tracking, setTracking] = useState('');
+  const [tracking, setTracking] = useState("");
   const [shipments, setShipments] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   const [isUserRegistered, setIsUserRegistered] = useState(false);
-  const [navBtnText, setNavBtnText] = useState('');
-  const [navBtnLink, setNavBtnLink] = useState('');
+  const [navBtnText, setNavBtnText] = useState("");
+  const [navBtnLink, setNavBtnLink] = useState("");
 
+  const colorArr = ["#986b53", "#f50422", "#983f7a", "#ea24a3"];
   console.log(shipments);
 
   const handleTrack = (tracking) => {
     const body = { tracking };
     console.log(body);
-    fetch('http://localhost:8080/api/test', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("http://localhost:8080/api/test", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
@@ -41,12 +42,13 @@ const App = () => {
         data.id = uuidv4();
         console.log(data);
         setSelectedItem({});
+        data.color = colorArr[Math.floor(Math.random() * colorArr.length)];
         setShipments([...shipments, data]);
       });
   };
 
   const handleNavBtnClick = () => {
-    if (navBtnLink === '/login') setIsUserAuthenticated(false);
+    if (navBtnLink === "/login") setIsUserAuthenticated(false);
   };
 
   return (
@@ -140,8 +142,8 @@ const Home = ({
   setNavBtnText,
 } = props) => {
   useEffect(() => {
-    setNavBtnText('Log Out');
-    setNavBtnLink('/login');
+    setNavBtnText("Log Out");
+    setNavBtnLink("/login");
   }, []);
 
   return (
@@ -160,8 +162,8 @@ const Home = ({
         <Detail selectedItem={selectedItem} shipments={shipments} />
       </div>
       <div className="calendar-container">
-          <Calendar />
-        </div>
+        <Calendar shipments={shipments} />
+      </div>
     </React.Fragment>
   );
 };
