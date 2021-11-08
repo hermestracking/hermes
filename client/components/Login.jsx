@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import Box from '../public/images/box.png';
 import axios from 'axios';
 
 const Login = ({
@@ -45,21 +46,36 @@ const Login = ({
 
   return (
     <div className="login-page-wrapper">
-      <input
-        type="email"
-        placeholder="Enter your e-mail address"
-        value={credentials.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        placeholder="Enter your password"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <button type="sumbit" className="login-button" onClick={handleLoginClick}>
-        Login
-      </button>
+      <div className="field-wrapper">
+        <div className="user-container">
+          <i class="far fa-user user-icon"></i>
+          <input
+            className="username-field"
+            type="email"
+            placeholder="Enter your e-mail address"
+            value={credentials.email}
+            onChange={handleChange}
+          />
+          <div className="user-line"></div>
+        </div>
+        <div className="password-container">
+          <i class="fas fa-lock password-icon"></i>
+          <input
+            className="password-field"
+            type="password"
+            placeholder="Enter your password"
+            value={credentials.password}
+            onChange={handleChange}
+          />
+          <div className="password-line"></div>
+        </div>
+        <button type="sumbit" className="login-button" onClick={handleLoginClick}>
+          Login
+        </button>
+      </div>
+      <div className="box-wrapper">
+        <img className="box bounce" src={Box} />
+      </div>
     </div>
   );
 };
