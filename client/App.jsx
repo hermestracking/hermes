@@ -14,6 +14,7 @@ import Detail from './components/Detail';
 import Wing from './public/images/sprint.png';
 import { v4 as uuidv4 } from 'uuid';
 import './stylesheets/styles.scss';
+import Calendar from "./components/Calendar";
 
 const App = () => {
   const [tracking, setTracking] = useState('');
@@ -158,6 +159,9 @@ const Home = ({
         />
         <Detail selectedItem={selectedItem} shipments={shipments} />
       </div>
+      <div className="calendar-container">
+          <Calendar />
+        </div>
     </React.Fragment>
   );
 };
