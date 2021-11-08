@@ -4,6 +4,7 @@ import X from '../public/images/thin x mark.png';
 
 const Item = (props) => {
     const color = props.shipments.color;
+    console.log('Order: ', props.order)
 
     const [reload, setReload] = useState(false);
 
@@ -27,6 +28,7 @@ const Item = (props) => {
         if (e.key === 'Enter') {
             e.target.blur();
             e.preventDefault();
+            props.order.userLabel = text.current;
         }
     }
 
