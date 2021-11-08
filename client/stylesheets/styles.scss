@@ -49,6 +49,14 @@ body {
 .log-out-button {
   font-weight: 200;
   cursor: pointer;
+  
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: $black;
+  }
 }
 
 // TRACKING INPUT BAR

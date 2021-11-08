@@ -1,8 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { stringify } from 'uuid';
+import { Link } from 'react-router-dom';
 
-const Signup = (props) => {
+const Signup = ({
+  isUserRegistered,
+  setIsUserRegistered,
+  navBtnLink,
+  setNavBtnLink,
+  navBtnText,
+  setNavBtnText,
+} = props) => {
   const [userDetails, setUserDetails] = useState({
     name: '',
     email: '',
@@ -13,9 +21,9 @@ const Signup = (props) => {
       address2: '',
       city: '',
       state: '',
-      zip: ''
+      zip: '',
     },
-    trackingNumbers: undefined
+    trackingNumbers: undefined,
   });
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -27,32 +35,41 @@ const Signup = (props) => {
       setUserDetails((prevDetails) => ({
         ...prevDetails,
         address: address,
-      }))
-    } else setUserDetails((prevdetails) => ({
-      ...prevdetails,
-      [id]: value,
-    }));
+      }));
+    } else
+      setUserDetails((prevdetails) => ({
+        ...prevdetails,
+        [id]: value,
+      }));
     // console.log(e.target.id);
     console.log(userDetails);
   };
   const handleSignupClick = (e) => {
     console.log('Deets', userDetails);
-    // axios('user/signup', {
-    //   method: 'POST',
-    //   data: userDetails,
-    // })
-    //   .then(res => {
-    //     console.log(res.data);
-    //   })
-  }
+    axios('user/signup', {
+      method: 'POST',
+      data: userDetails,
+    }).then((res) => {
+      console.log(res.data);
+      res !== null
+        ? setIsUserRegistered(true)
+        : console.log('Error: please try again');
+      // TODO: User notification to the effect of this console log
+    });
+  };
 
-  return(
+  useEffect(() => {
+    setNavBtnText('Login')
+    setNavBtnLink('/login')
+  }, [])
+
+  return (
     <React.Fragment>
       <div className="signup-page-wrapper">
         <h2 className="signup-header">Nice to meet you!</h2>
         <div className="signup-page-left">
           <div className="signup-name-wrapper">
-          <i class="far fa-user signup-user-icon"></i>
+            <i className="far fa-user signup-user-icon"></i>
             <input
               id="name"
               className="signup-name-field"
@@ -64,7 +81,7 @@ const Signup = (props) => {
           </div>
           <div className="signup-line"></div>
           <div className="email-signup-wrapper">
-            <i class="far fa-envelope signup-email-icon"></i>
+            <i className="far fa-envelope signup-email-icon"></i>
             <input
               id="email"
               className="signup-email-field"
@@ -76,7 +93,7 @@ const Signup = (props) => {
           </div>
           <div className="signup-line"></div>
           <div className="signup-password-wrapper">
-            <i class="fas fa-lock signup-lock-icon"></i>
+            <i className="fas fa-lock signup-lock-icon"></i>
             <input
               id="password"
               className="signup-password-field"
@@ -87,34 +104,34 @@ const Signup = (props) => {
             />
           </div>
           <div className="signup-line"></div>
-            <div className="signup-address1-wrapper">
-              <i class="far fa-address-card signup-address-icon"></i>
-              <input
-                id="address.address1"
-                className="signup-address1-field"
-                type="text"
-                placeholder="Street and number (e.g. 123 Eazy Street)"
-                value={userDetails.address.address1}
-                onChange={handleChange}
-              />
-            </div>
+          <div className="signup-address1-wrapper">
+            <i className="far fa-address-card signup-address-icon"></i>
+            <input
+              id="address.address1"
+              className="signup-address1-field"
+              type="text"
+              placeholder="Street and number (e.g. 123 Eazy Street)"
+              value={userDetails.address.address1}
+              onChange={handleChange}
+            />
+          </div>
           <div className="signup-line"></div>
         </div>
         <div className="signup-page-right">
           <div className="signup-address2-wrapper">
-            <i class="far fa-address-card signup-address-icon"></i>
+            <i className="far fa-address-card signup-address-icon"></i>
             <input
               id="address.address2"
-              classname="signup-address2-field"
+              className="signup-address2-field"
               type="text"
               placeholder="Optional: additional info (e.g. Apt 1)"
               value={userDetails.address.address2}
               onChange={handleChange}
             />
-          </div> 
+          </div>
           <div className="signup-line"></div>
-          <div className="signup-city-wrapper"> 
-            <i class="far fa-map signup-map-icon"></i>
+          <div className="signup-city-wrapper">
+            <i className="far fa-map signup-map-icon"></i>
             <input
               id="address.city"
               className="signup-address-city-field"
@@ -126,10 +143,10 @@ const Signup = (props) => {
           </div>
           <div className="signup-line"></div>
           <div className="signup-state-wrapper">
-            <i class="far fa-map signup-map-icon"></i>
+            <i className="far fa-map signup-map-icon"></i>
             <input
               id="address.state"
-              classname="signup-address-state-field"
+              className="signup-address-state-field"
               type="text"
               placeholder="State (e.g. LA)"
               value={userDetails.address.state}
@@ -138,7 +155,7 @@ const Signup = (props) => {
           </div>
           <div className="signup-line"></div>
           <div className="signup-zip-wrapper signup-zip-icon">
-            <i class="fas fa-map-marker-alt"></i>
+            <i className="fas fa-map-marker-alt"></i>
             <input
               id="address.zip"
               className="signup-address-zip-field"
@@ -149,14 +166,19 @@ const Signup = (props) => {
             />
           </div>
           <div className="signup-line"></div>
-          <button type="sumbit" className="signup-button" onClick={handleSignupClick}>
-            Register
-          </button>
+          <Link to="/signup">
+            <button
+              type="sumbit"
+              className="signup-button"
+              onClick={handleSignupClick}
+            >
+              Register
+            </button>
+          </Link>
         </div>
-        
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default Signup;
