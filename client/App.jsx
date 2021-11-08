@@ -153,7 +153,7 @@ const Home = ({
 
   useEffect(() => {
     console.log('refreshing user data!')
-    fetch('/user/getUser')
+    fetch('/user')
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -169,12 +169,6 @@ const Home = ({
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({email: currentUser.email, tracking: shipments})
     })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-      console.log('updating tracking!')
-      })
-      .catch((err) => console.log(err))
   }, [shipments])
 
 

@@ -76,39 +76,16 @@ userController.authenticateUser = (req, res, next) => {
 };
 
 userController.updateTracking = (req, res, next) => {
-  console.log('request body: ', req.body)
-  const { email, tracking } = req.body;
-  if (tracking.length > 0) {
-    model.User.findOne(
-      { email: email }
-    ).then((err, user) => {
+  console.log(req.body)
+  const { email, tracking } = req.body
+  // const newTrackingNumber = new trackingNumber({number: trackingNumber.number, label: trackingNumber.label});
+  model.User.findOneAndUpdate({ email: email }, { tracking: tracking })
+    .then((err, user) => {
       if (err) return next(err);
-      console.log('User: ', user);
       res.locals.tracking = user.tracking;
       return next();
     })
-  }
-  else return next();
-
-  // try {
-  //   console.log(req.body);
-  //   const { email, tracking } = req.body;
-  //   // const newTrackingNumber = new trackingNumber({number: trackingNumber.number, label: trackingNumber.label});
-  //   if (tracking.length > 0) {
-  //     model.User.findOneAndUpdate(
-  //       { email: email },
-  //       { tracking: tracking }
-  //     ).then((err, user) => {
-  //       console.log(user);
-  //       if (err) return next(err);
-  //       res.locals.tracking = user.tracking;
-  //       return next();
-  //     });
-  //   } else return next();
-  // } catch (err) {
-  //   console.log(err);
-  //   return next(err);
-  // }
-};
+  return next();
+}
 
 module.exports = userController;
