@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Track from './components/Track';
@@ -14,7 +20,7 @@ const App = () => {
   const [shipments, setShipments] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(true);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
   console.log(shipments);
 
@@ -47,23 +53,33 @@ const App = () => {
             <h3 className="log-out-button">Log Out</h3>
           </div>
         </div>
+        <Signup />
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          {/* <Route path="/">
-          { isUserAuthenticated 
-            ? <Redirect to="/home" />
-            : <Login
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                isUserAuthenticated={isUserAuthenticated}
-                setIsUserAuthenticated={setIsUserAuthenticated}
+          <Route path="/fakeroot">
+            {isUserAuthenticated ? (
+              <Home
+                tracking={tracking}
+                setTracking={setTracking}
+                handleTrack={handleTrack}
+                shipments={shipments}
+                setShipments={setShipments}
+                setSelectedItem={setSelectedItem}
+                selectedItem={selectedItem}
               />
-          }
-          </Route> */}
+            ) : (
+              <Login
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+              isUserAuthenticated={isUserAuthenticated}
+              setIsUserAuthenticated={setIsUserAuthenticated}
+              />
+            )}
+          </Route>
+          <Route path="/login"></Route>
           <Route path="/signup">{/* <Signup /> */}</Route>
-          {/* <Route path="/home"> */}
-          <Route path="/">
+          <Route path="/home">
             <Home
               tracking={tracking}
               setTracking={setTracking}

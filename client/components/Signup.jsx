@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { stringify } from 'uuid';
 
 const Signup = (props) => {
@@ -7,85 +7,99 @@ const Signup = (props) => {
     name: '',
     email: '',
     password: '',
-    token: null,
+    token: undefined,
     address: {
       address1: '',
-      address2: null,
+      address2: '',
       city: '',
       state: '',
-      zip: null
+      zip: ''
     },
-    trackingNumbers: null
+    trackingNumbers: undefined
   });
   const handleChange = (e) => {
-    const { type, value } = e.target;
-    setUserDetails((prevDetails) => ({
-      ...prevDetails,
-      [type]: value,
+    const { id, value } = e.target;
+    if (id.includes('address.')) {
+      const period = id.indexOf('.');
+      const key = id.slice(period + 1);
+      const address = userDetails.address;
+      address[key] = value;
+      setUserDetails((prevDetails) => ({
+        ...prevDetails,
+        address: address,
+      }))
+    } else setUserDetails((prevdetails) => ({
+      ...prevdetails,
+      [id]: value,
     }));
+    // console.log(e.target.id);
+    console.log(userDetails);
   };
   const handleSignupClick = (e) => {
     console.log('Deets', userDetails);
-    axios('user/signup', {
-      method: 'POST',
-      data: userDetails,
-    })
-      .then(res => {
-        console.log(res.data);
-      })
+    // axios('user/signup', {
+    //   method: 'POST',
+    //   data: userDetails,
+    // })
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
   }
 
   return(
     <div className="singup-page-wrapper">
       <input
-        type="name"
+        id="name"
+        type="text"
         placeholder="Full name"
-        value={credentials.email}
+        value={userDetails.name}
         onChange={handleChange}
       />
       <input
+        id="email"
         type="email"
         placeholder="Email address"
-        value={credentials.email}
+        value={userDetails.email}
         onChange={handleChange}
       />
       <input
+        id="password"
         type="password"
         placeholder="Password"
-        value={credentials.password}
+        value={userDetails.password}
         onChange={handleChange}
       />
       <input
-        type="address.address1"
+        id="address.address1"
         placeholder="Street and number (e.g. 123 Eazy Street)"
-        value={credentials.password}
+        value={userDetails.address.address1}
         onChange={handleChange}
       />
       <input
-        type="address.address2"
+        id="address.address2"
         placeholder="Optional: additional info (e.g. Apt 1)"
-        value={credentials.password}
+        value={userDetails.address.address2}
         onChange={handleChange}
       />
       <input
-        type="address.city"
+        id="address.city"
         placeholder="City (e.g. New Orleans)"
-        value={credentials.password}
+        value={userDetails.address.city}
         onChange={handleChange}
       />
       <input
-        type="address.state"
+        id="address.state"
         placeholder="State (e.g. LA)"
-        value={credentials.password}
+        value={userDetails.address.state}
         onChange={handleChange}
       />
       <input
-        type="address.zip"
+        id="address.zip"
         placeholder="Zip (e.g. 12345)"
-        value={credentials.password}
+        value={userDetails.address.zip}
         onChange={handleChange}
       />
-      <button type="sumbit" className="login-button" onClick={handleLoginClick}>
+      <button type="sumbit" className="login-button" onClick={handleSignupClick}>
         Signup
       </button>
     </div>
