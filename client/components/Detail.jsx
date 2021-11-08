@@ -7,8 +7,6 @@ const Detail = (props) => {
     let city = "";
     let state ="";
     if (Object.keys(props.selectedItem).length){
-        // state = "Texas";
-        // city = "Houston";
         city = props.selectedItem.recentActivity[0].location.address.city;
         state = props.selectedItem.recentActivity[0].location.address.stateProvince;
     }
@@ -33,5 +31,5 @@ const Detail = (props) => {
         </React.Fragment>
     )
 };
-//<img src={`https://maps.googleapis.com/maps/api/staticmap?center=${city},${state}&zoom=12&size=400x400&key=AIzaSyBJxF1BhB_ITohgRDtOc2AUErTYRcYkEjU`}></img>
+
 export default Detail; 

@@ -8,6 +8,10 @@ const Login = ({
   setCurrentUser,
   isUserAuthenticated,
   setIsUserAuthenticated,
+  navBtnLink,
+  setNavBtnLink,
+  navBtnText,
+  setNavBtnText,
 } = props) => {
   const [credentials, setCredentials] = useState({
     email: '',
@@ -44,11 +48,17 @@ const Login = ({
       .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    setIsUserAuthenticated(false);
+    setNavBtnText('Sign Up');
+    setNavBtnLink('/signup');
+  }, [])
+
   return (
     <div className="login-page-wrapper">
       <div className="field-wrapper">
         <div className="user-container">
-          <i class="far fa-user user-icon"></i>
+          <i className="far fa-user user-icon"></i>
           <input
             className="username-field"
             type="email"
@@ -59,7 +69,7 @@ const Login = ({
           <div className="user-line"></div>
         </div>
         <div className="password-container">
-          <i class="fas fa-lock password-icon"></i>
+          <i className="fas fa-lock password-icon"></i>
           <input
             className="password-field"
             type="password"

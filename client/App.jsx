@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Track from './components/Track';
@@ -8,6 +14,7 @@ import Detail from './components/Detail';
 import Wing from './public/images/sprint.png';
 import { v4 as uuidv4 } from 'uuid';
 import './stylesheets/styles.scss';
+import Calendar from "./components/Calendar";
 
 const App = () => {
   const [tracking, setTracking] = useState('');
@@ -15,6 +22,9 @@ const App = () => {
   const [selectedItem, setSelectedItem] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
+  const [isUserRegistered, setIsUserRegistered] = useState(false);
+  const [navBtnText, setNavBtnText] = useState('');
+  const [navBtnLink, setNavBtnLink] = useState('');
 
   console.log(shipments);
 
@@ -35,6 +45,10 @@ const App = () => {
       });
   };
 
+  const handleNavBtnClick = () => {
+    if (navBtnLink === '/login') setIsUserAuthenticated(false);
+  };
+
   return (
     <Router>
       <div className="body-wrapper">
@@ -44,37 +58,55 @@ const App = () => {
             <h1 className="app-header">hermes</h1>
           </div>
           <div className="log-out-wrapper">
-            <h3 className="log-out-button">Log Out</h3>
+            <h3 className="log-out-button">
+              <Link to={navBtnLink} onClick={handleNavBtnClick}>
+                {navBtnText}
+              </Link>
+            </h3>
           </div>
         </div>
-        {/* <Signup /> */}
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/">
-          { isUserAuthenticated 
-            ? 
-            <Home
-            tracking={tracking}
-            setTracking={setTracking}
-            handleTrack={handleTrack}
-            shipments={shipments}
-            setShipments={setShipments}
-            setSelectedItem={setSelectedItem}
-            selectedItem={selectedItem}
-          />
-            : <Login
+          <Route exact path="/">
+            {isUserAuthenticated ? (
+              <Redirect from="/" to="/home" />
+            ) : (
+              <Redirect from="/" to="/login" />
+            )}
+          </Route>
+          <Route path="/login">
+            {isUserAuthenticated ? (
+              <Redirect from="/login" to="/" />
+            ) : (
+              <Login
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
                 isUserAuthenticated={isUserAuthenticated}
                 setIsUserAuthenticated={setIsUserAuthenticated}
+                navBtnLink={navBtnLink}
+                setNavBtnLink={setNavBtnLink}
+                navBtnText={navBtnText}
+                setNavBtnText={setNavBtnText}
               />
-          }
-          </Route> 
-          <Route path="/signup">{/* <Signup /> */}</Route>
-          {/* <Route path="/home"> */}
+            )}
+          </Route>
+          <Route path="/signup">
+            {isUserRegistered ? (
+              <Redirect from="/signup" to="/login" />
+            ) : (
+              <Signup
+                isUserRegistered={isUserRegistered}
+                setIsUserRegistered={setIsUserRegistered}
+                navBtnLink={navBtnLink}
+                setNavBtnLink={setNavBtnLink}
+                navBtnText={navBtnText}
+                setNavBtnText={setNavBtnText}
+              />
+            )}
+          </Route>
           <Route path="/home">
-          <Home
+            <Home
               tracking={tracking}
               setTracking={setTracking}
               handleTrack={handleTrack}
@@ -82,6 +114,10 @@ const App = () => {
               setShipments={setShipments}
               setSelectedItem={setSelectedItem}
               selectedItem={selectedItem}
+              navBtnLink={navBtnLink}
+              setNavBtnLink={setNavBtnLink}
+              navBtnText={navBtnText}
+              setNavBtnText={setNavBtnText}
             />
           </Route>
         </Switch>
@@ -98,7 +134,16 @@ const Home = ({
   setShipments,
   setSelectedItem,
   selectedItem,
+  navBtnLink,
+  setNavBtnLink,
+  navBtnText,
+  setNavBtnText,
 } = props) => {
+  useEffect(() => {
+    setNavBtnText('Log Out');
+    setNavBtnLink('/login');
+  }, []);
+
   return (
     <React.Fragment>
       <Track
@@ -114,6 +159,9 @@ const Home = ({
         />
         <Detail selectedItem={selectedItem} shipments={shipments} />
       </div>
+      <div className="calendar-container">
+          <Calendar />
+        </div>
     </React.Fragment>
   );
 };
