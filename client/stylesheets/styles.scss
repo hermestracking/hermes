@@ -11,6 +11,7 @@ $green: #4fc946;
 $blue: #3c63b2;
 $lavender: #a66ed6;
 
+
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -148,9 +149,16 @@ body {
 .empty-message {
   font-size: 1.5rem;
   font-weight: 300;
-  margin-left: 12.5rem;
+  margin-left: 35%;
   color: $grey;
   margin-top: 9rem;
+
+}.detail-message {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-left: 38%;
+  color: $grey;
+  margin-top: 8.4rem;
 }
 
 .list-view-container {
@@ -284,6 +292,7 @@ body {
 .google-map {
   height: auto;
   width: 65%;
+  max-width: 425px;
   margin: auto;
   margin-top: 2rem;
   border-radius: 0.4rem;
