@@ -56,7 +56,7 @@ body {
 .log-out-button {
   font-weight: 200;
   cursor: pointer;
-  
+
   a {
     text-decoration: none;
   }
@@ -479,48 +479,85 @@ body {
 }
 
 //CALENDER
-.calendar-view-container {
-  height: 80vh;
-  width: 46%;
-  border: 1px solid $grey;
-  border-radius: 0.5rem;
-}
 
-.calendar-header-wrapper {
-  height: 2.5rem;
-  border-bottom: 1px solid $grey;
-  background-color: $off-white;
-  border-radius: 0.5rem 0.5rem 0 0;
-  padding-top: 0.6rem;
-}
-
-.calendar-header {
-  font-size: 1.6rem;
-  font-weight: 100;
-  margin-left: 1.4rem;
-  margin-top: 0;
-  text-align: center;
+.week-wrapper {
+  padding-top: 1rem;
+  padding-left: 1.6rem;
   padding-right: 1rem;
+  display:flex;
 }
 
-.calendar-body {
+.day-header {
+  float: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: $teal;
+  border-radius: 0.6rem 0.6rem 0 0;
+  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.calendar-number {
-  font-size: 1.3rem;
-  font-weight: 100;
-  margin-left: 3rem;
-  margin-top: 2rem;
+.day-body{
+  text-align: center;
+  width: 98%;
+  height: 100%;
+  color: black;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: row;
 }
 
-.carlendar-delivery {
-  font-size: 1.3rem;
-  font-weight: 100;
-  margin-left: 3rem;
-  margin-top: 2rem;
-}
+// .calendar-view-container {
+//   height: 80vh;
+//   width: 46%;
+//   border: 1px solid $grey;
+//   border-radius: 0.5rem;
+// }
+
+// .calendar-header-wrapper {
+//   height: 2.5rem;
+//   border-bottom: 1px solid $grey;
+//   background-color: $off-white;
+//   border-radius: 0.5rem 0.5rem 0 0;
+//   padding-top: 0.6rem;
+// }
+
+// .calendar-header {
+//   font-size: 1.6rem;
+//   font-weight: 100;
+//   margin-left: 1.4rem;
+//   margin-top: 0;
+//   text-align: center;
+//   padding-right: 1rem;
+// }
+
+// .calendar-body {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .calendar-number {
+//   font-size: 1.3rem;
+//   font-weight: 100;
+//   margin-left: 3rem;
+//   margin-top: 2rem;
+// }
+
+// .carlendar-delivery {
+//   font-size: 1.3rem;
+//   font-weight: 100;
+//   margin-left: 3rem;
+//   margin-top: 2rem;
+// }
 
 // .calendar-wrapper {
 //   padding-top: 1.6rem;
