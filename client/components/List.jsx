@@ -20,7 +20,7 @@ const List = (props) => {
                     <div className="items-list">
                         {shipArray}
                     </div> :
-                    <div className="empty-message"> Add a shipment to track! </div>
+                    <div className="empty-message"> Add a shipment to track </div>
                     }
                 </div>
             </div>

@@ -19,6 +19,7 @@ const Detail = (props) => {
                 
                 
                 <div className="detail-body">
+                    {props.shipments.length === 0 ? <div className="empty-detail-message">Add a shipment for details</div> : null }
                    <div className="tracking-number"> {!props.shipments.filter(orders => orders.trackingNumber === props.selectedItem.trackingNumber).length ? null : 'Tracking Number: ' + props.selectedItem.trackingNumber } </div>
                    <div className="expected-delivery">{!props.shipments.filter(orders => orders.deliveryDate === props.selectedItem.deliveryDate).length ? null : 'Expected Delivery: ' + moment(props.selectedItem.deliveryDate).format('MMMM do YYYY')}</div>
                    <div className="expected-delivery"> {!props.shipments.filter(orders => orders.trackingNumber === props.selectedItem.trackingNumber).length ? null : 'Most Recent Update: ' + props.selectedItem.recentActivity[0].status.description } </div>
