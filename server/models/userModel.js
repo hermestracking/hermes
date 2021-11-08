@@ -16,6 +16,11 @@ mongoose
 
 const Schema = mongoose.Schema;
 
+const trackingNumberSchema = new Schema({
+  number: {type: String, required: true, unique: true},
+  label: String,
+});
+
 const userSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -28,7 +33,7 @@ const userSchema = new Schema({
     state: { type: String, required: true },
     zip: { type: String, required: true },
   },
-  trackingNumbers: { type: String },
+  tracking: Array,
 });
 
 userSchema.pre('save', function(next) {
@@ -61,6 +66,7 @@ userSchema.pre('save', function(next) {
 //     .catch(err => callback(err));
 // };
 
+const TrackingNumber = mongoose.model('trackingNumber', trackingNumberSchema);
 const User = mongoose.model('user', userSchema);
 
-module.exports = { User };
+module.exports = { User, TrackingNumber};
