@@ -9,6 +9,8 @@ body {
   margin: 0;
 }
 
+// HEADER & LOGO
+
 .header-wrapper {
   display: flex;
   width: 100vw;
@@ -48,6 +50,8 @@ body {
   font-weight: 200;
   cursor: pointer;
 }
+
+// TRACKING INPUT BAR
 
 .tracking-input-container {
   position: relative;
@@ -108,6 +112,8 @@ body {
   cursor: pointer;
   background-color: $off-white;
 }
+
+// LIST & DETAIL VIEWS
 
 .card-container {
   margin-top: 11rem;
@@ -231,4 +237,205 @@ body {
   font-weight: 100;
   margin-left: 3rem;
   margin-top: 2rem;
+}
+
+// LOGIN PAGE
+
+.login-page-wrapper {
+  height: 67vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.field-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $off-white;
+  border-right: 2px solid $teal;
+  border-radius: 2rem 0rem 0rem 2rem;
+  padding: 4rem 4.1rem 3.8rem 4.6rem;
+}
+
+.user-container,
+.password-container {
+  position: relative;
+}
+
+.username-field {
+  height: 2rem;
+  width: 13.5rem;
+  border: none;
+  margin-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.username-field::placeholder {
+  font-size: 0.95rem;
+}
+
+.user-line {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border: 1px solid $off-white;
+  width: 17rem;
+}
+
+.password-field {
+  height: 2rem;
+  width: 13.5rem;
+  border: none;
+  margin-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.password-field::placeholder {
+  padding-left: 0.15rem;
+  font-size: 0.95rem;
+}
+
+.password-line {
+  margin-bottom: 2.5rem;
+  margin-right: 1rem;
+  border: 1px solid $off-white;
+  width: 17rem;
+}
+
+.login-button {
+  height: 2.75rem;
+  width: 17.5rem;
+  background-color: $teal;
+  border: 1px solid $teal;
+  border-radius: 5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.box-wrapper {
+  // border: 2.2px solid $teal;
+  // border-top: 4.9px solid $teal;
+  // border-left: none;
+  // border-bottom: none;
+  border: none;
+  border-radius: 0 2rem 2rem 0;
+  background-color: $teal;
+}
+
+.box {
+  height: 10.5rem;
+  width: auto;
+  padding: 4.48rem;
+  margin-left: 0;
+  margin-bottom: 0.06rem;
+}
+
+.bounce {
+  animation: bounce 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-12px);
+  }
+}
+
+// SIGNUP PAGE
+
+.signup-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 44.5rem;
+  width: 49.5vw;
+  margin: auto;
+  margin-right: 23rem;
+  margin-bottom: 12rem;
+  border: 3px solid $off-white;
+  border-radius: 3rem;
+  padding-top: 2.2rem;
+  padding-bottom: 3rem;
+  align-items: center;
+}
+
+.signup-header {
+  font-size: 2rem;
+  font-weight: 200;
+  margin-bottom: 3.5rem;
+}
+
+.signup-page-left,
+.signup-page-right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-page-left input,
+.signup-page-right input {
+  height: 2rem;
+  width: 30vw;
+  border: none;
+  margin-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.signup-line {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border: 1px solid $off-white;
+  width: 25.4rem;
+}
+
+.signup-user-icon,
+.signup-email-icon,
+.signup-lock-icon,
+.signup-address-icon,
+.signup-map-icon,
+.signup-zip-icon {
+  margin-left: 2.5rem;
+}
+
+.signup-button {
+  height: 3.2rem;
+  width: 21rem;
+  background-color: $teal;
+  border: 3px solid $teal;
+  border-radius: 5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 3rem;
+  margin-left: 0rem;
+  transition: all 0.4s;
+}
+
+.signup-button:hover {
+  color: $teal;
+  background-color: white;
 }

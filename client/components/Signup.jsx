@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { stringify } from 'uuid';
 
 const Signup = (props) => {
@@ -36,59 +36,107 @@ const Signup = (props) => {
   }
 
   return(
-    <div className="singup-page-wrapper">
-      <input
-        type="name"
-        placeholder="Full name"
-        value={credentials.email}
-        onChange={handleChange}
-      />
-      <input
-        type="email"
-        placeholder="Email address"
-        value={credentials.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <input
-        type="address.address1"
-        placeholder="Street and number (e.g. 123 Eazy Street)"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <input
-        type="address.address2"
-        placeholder="Optional: additional info (e.g. Apt 1)"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <input
-        type="address.city"
-        placeholder="City (e.g. New Orleans)"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <input
-        type="address.state"
-        placeholder="State (e.g. LA)"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <input
-        type="address.zip"
-        placeholder="Zip (e.g. 12345)"
-        value={credentials.password}
-        onChange={handleChange}
-      />
-      <button type="sumbit" className="login-button" onClick={handleLoginClick}>
-        Signup
-      </button>
-    </div>
+    <React.Fragment>
+      <div className="signup-page-wrapper">
+        <h2 className="signup-header">Nice to meet you!</h2>
+        <div className="signup-page-left">
+          <div className="signup-name-wrapper">
+          <i class="far fa-user signup-user-icon"></i>
+            <input
+              className="signup-name-field"
+              type="text"
+              placeholder="Full name"
+              value={userDetails.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-line"></div>
+          <div className="email-signup-wrapper">
+            <i class="far fa-envelope signup-email-icon"></i>
+            <input
+              className="signup-email-field"
+              type="email"
+              placeholder="Email address"
+              value={userDetails.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-line"></div>
+          <div className="signup-password-wrapper">
+            <i class="fas fa-lock signup-lock-icon"></i>
+            <input
+              className="signup-password-field"
+              type="password"
+              placeholder="Password"
+              value={userDetails.password}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-line"></div>
+            <div className="signup-address1-wrapper">
+              <i class="far fa-address-card signup-address-icon"></i>
+              <input
+                className="signup-address1-field"
+                type="address.address1"
+                placeholder="Street and number (e.g. 123 Eazy Street)"
+                value={userDetails.address.address1}
+                onChange={handleChange}
+              />
+            </div>
+          <div className="signup-line"></div>
+        </div>
+        <div className="signup-page-right">
+          <div className="signup-address2-wrapper">
+            <i class="far fa-address-card signup-address-icon"></i>
+            <input
+              classname="signup-address2-field"
+              type="address.address2"
+              placeholder="Optional: additional info (e.g. Apt 1)"
+              value={userDetails.address.address2}
+              onChange={handleChange}
+            />
+          </div> 
+          <div className="signup-line"></div>
+          <div className="signup-city-wrapper"> 
+            <i class="far fa-map signup-map-icon"></i>
+            <input
+              className="signup-address-city-field"
+              type="address.city"
+              placeholder="City (e.g. New Orleans)"
+              value={userDetails.address.city}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-line"></div>
+          <div className="signup-state-wrapper">
+            <i class="far fa-map signup-map-icon"></i>
+            <input
+              classname="signup-address-state-field"
+              type="address.state"
+              placeholder="State (e.g. LA)"
+              value={userDetails.address.state}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-line"></div>
+          <div className="signup-zip-wrapper signup-zip-icon">
+            <i class="fas fa-map-marker-alt"></i>
+            <input
+              className="signup-address-zip-field"
+              type="address.zip"
+              placeholder="Zip (e.g. 12345)"
+              value={userDetails.address.zip}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="signup-line"></div>
+          <button type="sumbit" className="signup-button" onClick={handleSignupClick}>
+            Register
+          </button>
+        </div>
+        
+      </div>
+    </React.Fragment>
   )
 }
 
