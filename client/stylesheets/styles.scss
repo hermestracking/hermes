@@ -439,3 +439,34 @@ body {
   color: $teal;
   background-color: white;
 }
+
+//CALENDER
+.calendar-wrapper {
+  padding-top: 1.6rem;
+  padding-left: 2rem;
+  padding-right: 1.4rem;
+  padding-bottom: 2.5rem;
+  width: 98vw;
+}
+
+.calendar-left-header {
+  height: 2.5rem;
+  font-weight: 400;
+  background-color: $off-white;
+  border-radius: 0.5rem 0.5rem 0 0;
+  // padding-top: 0.6rem;
+  // padding-left: 1.7rem;
+  // padding-right: 1.7rem;
+  // padding-bottom: 0.2rem;
+}
+
+.calendar-header {
+  height: 2.5rem;
+  font-weight: 150;
+  background-color: $off-white;
+  border-radius: 0.5rem 0.5rem 0 0;
+  // padding-top: 0.6rem;
+  // padding-left: 1.7rem;
+  // padding-right: 1.7rem;
+  // padding-bottom: 0.2rem;
+}
