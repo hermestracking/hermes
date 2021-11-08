@@ -8,13 +8,14 @@ import Detail from './components/Detail';
 import Wing from './public/images/sprint.png';
 import { v4 as uuidv4 } from 'uuid';
 import './stylesheets/styles.scss';
+import Calendar from "./components/Calendar";
 
 const App = () => {
   const [tracking, setTracking] = useState('');
   const [shipments, setShipments] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [isUserAuthenticated, setIsUserAuthenticated] = useState(true);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
   console.log(shipments);
 
@@ -50,9 +51,17 @@ const App = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          {/* <Route path="/">
+          <Route path="/">
           { isUserAuthenticated 
-            ? <Redirect to="/home" />
+            ?             <Home
+            tracking={tracking}
+            setTracking={setTracking}
+            handleTrack={handleTrack}
+            shipments={shipments}
+            setShipments={setShipments}
+            setSelectedItem={setSelectedItem}
+            selectedItem={selectedItem}
+          />
             : <Login
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
@@ -60,9 +69,9 @@ const App = () => {
                 setIsUserAuthenticated={setIsUserAuthenticated}
               />
           }
-          </Route> */}
-          <Route path="/signup">{/* <Signup /> */}</Route>
-          {/* <Route path="/home"> */}
+          </Route>
+          <Route path="/signup"><Signup /></Route>
+          <Route path="/home"/>
           <Route path="/">
             <Home
               tracking={tracking}
@@ -104,6 +113,9 @@ const Home = ({
         />
         <Detail selectedItem={selectedItem} shipments={shipments} />
       </div>
+      <div className="calendar-container">
+          <Calendar />
+        </div>
     </React.Fragment>
   );
 };
