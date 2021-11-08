@@ -48,7 +48,7 @@ const App = () => {
   };
 
   const handleNavBtnClick = () => {
-    if (navBtnLink === "/login") setIsUserAuthenticated(false);
+    if (navBtnLink === "/login") setIsUserAuthenticated(true);
   };
 
   return (
